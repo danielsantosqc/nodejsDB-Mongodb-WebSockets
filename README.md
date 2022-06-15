@@ -1,6 +1,5 @@
 # Backend con NodeJs
 ## nodejsDB-MongodbWebSockets
-- Curso de nodejs base de datos con mongoDB y web sockets
 ## proyecto de mensajeria 
 - Este es el diagrama de servidor - api de mensajeria
 
