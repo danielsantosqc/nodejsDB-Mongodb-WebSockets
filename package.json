@@ -1,0 +1,30 @@
+{
+  "name": "nodejsdb-mongodbwebsockets",
+  "version": "0.1.0",
+  "description": "Un chat como telegram pero mucho mejor",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "server": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/danielsantosqc/nodejsDB-Mongodb-WebSockets.git"
+  },
+  "keywords": [
+    "chat",
+    "telegrom",
+    "server"
+  ],
+  "author": "Daniel Santos (danielsantosqc@gmail.com)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/danielsantosqc/nodejsDB-Mongodb-WebSockets/issues"
+  },
+  "homepage": "https://github.com/danielsantosqc/nodejsDB-Mongodb-WebSockets#readme",
+  "dependencies": {
+    "body-parser": "^1.20.0",
+    "express": "^4.18.1"
+  }
+}
