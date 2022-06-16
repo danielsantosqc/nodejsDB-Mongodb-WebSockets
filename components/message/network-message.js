@@ -6,12 +6,22 @@ const router = express.Router();
 
 //rotess.............
 router.get('/', function (req, res) {
-  console.log(req.headers);
-  res.header({
-    "custom-header": "Nuestro valor personalizado",
-  });
+  // console.log(req.headers);
+  // res.header({
+  //   "custom-header": "Nuestro valor personalizado",
+  // });
 
-  response.success(req, res, 'Lista de mensajes')
+  // response.success(req, res, 'Lista de mensajes',200)
+
+  controller.getMessages()
+    .then((messaList) => {
+      response.success(req, res, messaList, 200);
+    })
+    .catch(e => {
+      response.error(req, res, 'Error inesperado- Unexcepted error', 500, e);
+    });
+
+
   console.log("message from GET");
 })
 
