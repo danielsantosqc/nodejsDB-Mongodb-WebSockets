@@ -25,6 +25,7 @@
   "homepage": "https://github.com/danielsantosqc/nodejsDB-Mongodb-WebSockets#readme",
   "dependencies": {
     "body-parser": "^1.20.0",
-    "express": "^4.18.1"
+    "express": "^4.18.1",
+    "mongoose": "^6.3.8"
   }
 }
