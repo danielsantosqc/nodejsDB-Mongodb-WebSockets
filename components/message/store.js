@@ -1,13 +1,10 @@
 // const list = [];
 const db = require('mongoose');
 const Model = require('./model');
+const configDB = require('../../config_db');
 
 db.Promise = global.Promise;
-db.connect(`mongodb+srv://usuario_tester:usuariotester12345@clusterdeprueva.gpw9e.mongodb.net/?retryWrites=true&w=majority`, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-  dbName: 'db_telegrom'
-});
+db.connect(configDB.database, configDB.config);
 console.log('[db] Conectada con exito');
 
 // get method
