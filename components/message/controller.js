@@ -1,5 +1,16 @@
 const store = require('./store');
 
+
+
+
+function getMessages(filterUser) {
+  return new Promise((resolve, reject) => {
+    resolve(store.list(filterUser));
+  });
+}
+
+
+
 function addMessage(user, message) {
   return new Promise(
     (resolve, reject) => {
@@ -10,7 +21,7 @@ function addMessage(user, message) {
       const fullMessage = {
         user: user,
         message: message,
-        data: new Date(),
+        date: new Date(),
       }
       // console.log(fullMessage);
       store.add(fullMessage)
@@ -21,13 +32,24 @@ function addMessage(user, message) {
   );
 }
 
-function getMessages() {
-  return new Promise((resolve, reject) => {
-    resolve(store.list());
+//aqui hace la lectura de la url, la direccion thhp y el id a cambiar el mensaje
+//y si todo correcto lo envia a store.js
+function updateMessage(id, message) {
+  return new Promise(async (resolve, reject) => {
+    console.log(id);
+    console.log(message);
+    if (!id || !message) {
+      reject('Invalid Data | Dato invalido');
+      return false;
+    }
+    const result = await store.updateTextMessage(id, message);
+    resolve(result);
   });
 }
+
 
 module.exports = {
   addMessage,
   getMessages,
+  updateMessage
 }

@@ -5,15 +5,18 @@ const controller = require('./controller');
 const router = express.Router();
 
 //rotess.............
+
+// method get to http
 router.get('/', function (req, res) {
-  // console.log(req.headers);
-  // res.header({
-  //   "custom-header": "Nuestro valor personalizado",
-  // });
 
-  // response.success(req, res, 'Lista de mensajes',200)
+  // aqui hace el control de que es lo que traera el get, dando lectura a la URL(http://localhost/messages)
+  const filterMessages = {
+    user: req.query.user,
+    // message: req.query.message,
+  } || null;
 
-  controller.getMessages()
+  console.log(filterMessages);
+  controller.getMessages(filterMessages)
     .then((messaList) => {
       response.success(req, res, messaList, 200);
     })
@@ -25,6 +28,7 @@ router.get('/', function (req, res) {
   console.log("message from GET");
 })
 
+// method post to http 
 router.post('/', function (req, res) {
 
   controller.addMessage(req.body.user, req.body.message)
@@ -36,6 +40,26 @@ router.post('/', function (req, res) {
     });
   console.log("message from POST");
 });
+
+
+//methos patch to http (para realizar cambios parciales)
+router.patch('/:id', function (req, res){
+  console.log(req.params.id)
+
+  controller.updateMessage(req.params.id, req.body.message)
+    .then((data) => {
+      response.success(req, res, data, 200);
+    })
+    .catch(e => {
+      response.error(req, res, 'Error interno', 500, e)
+    });
+
+
+  // res.send('Ok');
+} )
+
+
+
 
 router.delete('/', function (req, res) {
   console.log(req.body);
