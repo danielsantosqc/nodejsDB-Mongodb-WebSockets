@@ -9,6 +9,7 @@ const router = express.Router();
 // method get to http
 router.get('/', function (req, res) {
 
+  console.log("iniciaste un get");
   // aqui hace el control de que es lo que traera el get, dando lectura a la URL(http://localhost/messages)
   const filterMessages = {
     user: req.query.user,
@@ -43,7 +44,7 @@ router.post('/', function (req, res) {
 
 
 //methos patch to http (para realizar cambios parciales)
-router.patch('/:id', function (req, res){
+router.patch('/:id', function (req, res) {
   console.log(req.params.id)
 
   controller.updateMessage(req.params.id, req.body.message)
@@ -56,20 +57,18 @@ router.patch('/:id', function (req, res){
 
 
   // res.send('Ok');
-} )
+});
 
-
-
-
-router.delete('/', function (req, res) {
-  console.log(req.body);
-  console.log(req.query);
-  // res.send("message delet");
-  response.success(req, res, 'message DELETE ok doki...')
-
-  console.log("delete........ rom DELETE");
-})
-
+router.delete('/:id', function (req, res) {
+  console.log('hiciste un delete');
+  controller.deleteMessage(req.params.id)
+    .then(() => {
+      response.success(req, res,`Mensaje del id ${req.params.id} eliminado`, 200);
+    })
+    .catch(e => {
+      response.error(req, res, 'Error interno ', 500, e)
+    })
+});
 
 
 module.exports = router;

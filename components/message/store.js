@@ -1,19 +1,12 @@
-// const list = [];
-const db = require('mongoose');
 const Model = require('./model');
-const configDB = require('../../config_db');
-
-db.Promise = global.Promise;
-db.connect(configDB.database, configDB.config);
-console.log('[db] Conectada con exito');
 
 // get method
 async function getMessages(filterUser) {
   let filter = {};
-  if (filterUser.user !== undefined ) {
+  if (filterUser.user !== undefined) {
     filter = filterUser;
   }
-    const getMessages = await Model.find(filter);
+  const getMessages = await Model.find(filter);
 
   // return list;
   return getMessages;
@@ -38,12 +31,20 @@ async function updateTextMessages(id, message) {
   return newMessage;
 }
 
+function removeMessage(id) {
+  console.log('paso por la funcion removeMessaje en el store.js');
+  return Model.deleteOne({
+    _id: id,
+  });
+}
+
 
 
 module.exports = {
   add: addMessage,
   list: getMessages,
-  updateTextMessage: updateTextMessages
+  updateTextMessage: updateTextMessages,
+  remove: removeMessage,
   //get
   //pudate
   //delete
