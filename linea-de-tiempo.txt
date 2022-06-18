@@ -1,0 +1,11 @@
+hasta aqui funciona la conexion con el servidor y el servidor de banco de datos
+los methodos que funcionnan son:
+get(tambien busqueda por identificador)
+post
+patch
+delete
+
+la conexion con el banco de datos y las variables de acceso al banco de
+datos estan configurados en ficheros diferentes.
+-------------------------
+
